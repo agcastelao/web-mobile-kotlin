@@ -38,6 +38,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+
 @Composable
 fun GameScreen(navController: (Any) -> Unit) {
     var playerChoice by remember { mutableStateOf("") }
@@ -46,7 +47,6 @@ fun GameScreen(navController: (Any) -> Unit) {
     var playerWins by remember { mutableStateOf(0) }
     var computerWins by remember { mutableStateOf(0) }
 
-    // Função para converter escolha para emoji
     fun choiceToEmoji(choice: String): String {
         return when (choice) {
             "pedra" -> "🪨"
@@ -63,7 +63,6 @@ fun GameScreen(navController: (Any) -> Unit) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // Título do jogo
         Text(
             text = "Pedra Papel Tesoura 🎮",
             fontSize = 32.sp,
@@ -81,7 +80,6 @@ fun GameScreen(navController: (Any) -> Unit) {
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        // Row para as jogadas com emojis
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
@@ -143,7 +141,6 @@ fun GameScreen(navController: (Any) -> Unit) {
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        // Exibir as jogadas com emojis
         if (playerChoice.isNotEmpty() && computerChoice.isNotEmpty()) {
             Text(
                 text = "${choiceToEmoji(playerChoice)} X ${choiceToEmoji(computerChoice)}",
@@ -154,7 +151,6 @@ fun GameScreen(navController: (Any) -> Unit) {
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        // Exibir resultado do jogo
         if (resultMessage.isNotEmpty()) {
             Text(
                 text = resultMessage,
@@ -166,7 +162,6 @@ fun GameScreen(navController: (Any) -> Unit) {
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        // Exibir contadores de vitórias
         Text(text = "Vitórias do jogador: $playerWins")
         Text(text = "Vitórias do computador: $computerWins")
 
@@ -202,25 +197,24 @@ fun Footer(onDeveloperClick: (String) -> Unit) {
             fontSize = 14.sp,
             textAlign = TextAlign.Center,
             color = Color.Blue,
-            modifier = Modifier.clickable { onDeveloperClick("Maria Silva") }
+            modifier = Modifier.clickable { onDeveloperClick("Antonio Castelão") }
         )
         Text(
             text = "Vinicius Trigueiro",
             fontSize = 14.sp,
             textAlign = TextAlign.Center,
             color = Color.Blue,
-            modifier = Modifier.clickable { onDeveloperClick("João Pereira") }
+            modifier = Modifier.clickable { onDeveloperClick("Vinicius Trigueiro") }
         )
     }
 }
 
-// Função para obter jogada do computador
+
 fun getComputerChoice(): String {
     val options = arrayOf("pedra", "papel", "tesoura")
     return options[Random.nextInt(options.size)]
 }
 
-// Função para jogar
 fun playGame(
     playerChoice: String,
     computerChoice: String,

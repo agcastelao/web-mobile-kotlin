@@ -12,10 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PedraPapelTesoura"
         tools:targetApi="31">
-        <activity
-            android:name=".SobreArthur"
-            android:theme="@style/Theme.AppCompat.Light">
-        </activity>
+
+        <!-- Activity Principal -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -23,10 +21,28 @@
             android:theme="@style/Theme.PedraPapelTesoura">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Activity sobre Arthur -->
+        <activity
+            android:name=".SobreArthur"
+            android:theme="@style/Theme.AppCompat.Light">
+        </activity>
+
+        <!-- Activity sobre Antonio -->
+        <activity
+            android:name=".SobreAntonio"
+            android:theme="@style/Theme.AppCompat.Light">
+        </activity>
+
+        <!-- Activity sobre Vinícius -->
+        <activity
+            android:name=".SobreVinicius"
+            android:theme="@style/Theme.AppCompat.Light">
+        </activity>
+
     </application>
 
 </manifest>
