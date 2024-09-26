@@ -85,8 +85,18 @@ fun TelaSobreAntonio(modifier: Modifier = Modifier, onBackClick: () -> Unit, onG
             }
 
             // Informações
-            item { Text(text = "Nome: Antonio Castelao", style = MaterialTheme.typography.bodyLarge) }
-            item { Text(text = "Curso: Ciência da Computação", style = MaterialTheme.typography.bodyLarge) }
+            item {
+                Text(
+                    text = "Nome: Antonio Castelao",
+                    style = MaterialTheme.typography.bodyLarge
+                )
+            }
+            item {
+                Text(
+                    text = "Curso: Ciência da Computação",
+                    style = MaterialTheme.typography.bodyLarge
+                )
+            }
 
             item {
                 Button(
@@ -120,4 +130,6 @@ fun TelaSobreAntonio(modifier: Modifier = Modifier, onBackClick: () -> Unit, onG
             }
         }
     }
+
+
 }

@@ -38,8 +38,8 @@ class SobreVinicius : ComponentActivity() {
             }
         }
     }
-}
 
+}
 @Composable
 fun TelaSobre(modifier: Modifier = Modifier) {
     Card(
