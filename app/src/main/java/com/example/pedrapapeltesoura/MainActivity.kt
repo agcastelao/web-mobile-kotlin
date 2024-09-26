@@ -1,5 +1,6 @@
 package com.example.pedrapapeltesoura
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -14,29 +15,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pedrapapeltesoura.ui.theme.PedraPapelTesouraTheme
-import kotlin.random.Random
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.navigation.NavController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
+import kotlin.random.Random
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             PedraPapelTesouraTheme {
-                // Configure a navegação
-                val navController = rememberNavController()
-                NavHost(navController, startDestination = "game") {
-                    composable("game") { GameScreen(navController) }
-                    composable("about/{developerName}") { backStackEntry ->
-                        val developerName = backStackEntry.arguments?.getString("developerName")
-                        AboutDeveloper(developerName ?: "")
+                GameScreen { developerName ->
+                    when (developerName) {
+                        "Arthur Barbosa" -> startActivity(Intent(this, SobreArthur::class.java))
+                        "Antonio Castelão" -> startActivity(Intent(this, SobreAntonio::class.java))
+                        "Vinicius Trigueiro" -> startActivity(Intent(this, SobreVinicius::class.java))
                     }
                 }
             }
@@ -45,7 +39,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun GameScreen(navController: NavController) {
+fun GameScreen(navController: (Any) -> Unit) {
     var playerChoice by remember { mutableStateOf("") }
     var computerChoice by remember { mutableStateOf("") }
     var resultMessage by remember { mutableStateOf("") }
@@ -93,12 +87,7 @@ fun GameScreen(navController: NavController) {
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                // Emoji de Pedra acima do botão
-                Text(
-                    text = "🪨",
-                    fontSize = 50.sp,
-                    textAlign = TextAlign.Center
-                )
+                Text(text = "🪨", fontSize = 50.sp, textAlign = TextAlign.Center)
                 Spacer(modifier = Modifier.height(8.dp))
                 Button(
                     onClick = {
@@ -108,22 +97,15 @@ fun GameScreen(navController: NavController) {
                             if (playerWon) playerWins++ else if (computerWon) computerWins++
                         }
                     },
-                    shape = RoundedCornerShape(4.dp), // Menos arredondado
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = Color(0xFF585860) // Azul vivo
-                    )
+                    shape = RoundedCornerShape(4.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF585860))
                 ) {
                     Text("Pedra")
                 }
             }
 
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                // Emoji de Papel acima do botão
-                Text(
-                    text = "📄",
-                    fontSize = 50.sp,
-                    textAlign = TextAlign.Center
-                )
+                Text(text = "📄", fontSize = 50.sp, textAlign = TextAlign.Center)
                 Spacer(modifier = Modifier.height(8.dp))
                 Button(
                     onClick = {
@@ -133,22 +115,15 @@ fun GameScreen(navController: NavController) {
                             if (playerWon) playerWins++ else if (computerWon) computerWins++
                         }
                     },
-                    shape = RoundedCornerShape(4.dp), // Menos arredondado
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = Color(0xFF2196F3) // Azul vivo
-                    )
+                    shape = RoundedCornerShape(4.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF2196F3))
                 ) {
                     Text("Papel")
                 }
             }
 
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                // Emoji de Tesoura acima do botão
-                Text(
-                    text = "✂️",
-                    fontSize = 50.sp,
-                    textAlign = TextAlign.Center
-                )
+                Text(text = "✂️", fontSize = 50.sp, textAlign = TextAlign.Center)
                 Spacer(modifier = Modifier.height(8.dp))
                 Button(
                     onClick = {
@@ -158,10 +133,8 @@ fun GameScreen(navController: NavController) {
                             if (playerWon) playerWins++ else if (computerWon) computerWins++
                         }
                     },
-                    shape = RoundedCornerShape(4.dp), // Menos arredondado
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = Color(0xFFE91E63) // Azul vivo
-                    )
+                    shape = RoundedCornerShape(4.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFE91E63))
                 ) {
                     Text("Tesoura")
                 }
@@ -199,9 +172,7 @@ fun GameScreen(navController: NavController) {
 
         Spacer(modifier = Modifier.height(100.dp))
 
-        Footer { developerName ->
-            navController.navigate("about/$developerName") // Navegando para a tela "Sobre"
-        }
+        Footer(onDeveloperClick = navController)
     }
 }
 
@@ -219,27 +190,26 @@ fun Footer(onDeveloperClick: (String) -> Unit) {
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center
         )
-        // Tornando os nomes clicáveis
         Text(
             text = "Arthur Barbosa",
             fontSize = 14.sp,
             textAlign = TextAlign.Center,
             color = Color.Blue,
-            modifier = Modifier.clickable { onDeveloperClick("Arthur Barbosa") } // Navegação
+            modifier = Modifier.clickable { onDeveloperClick("Arthur Barbosa") }
         )
         Text(
-            text = "Maria Silva",
+            text = "Antonio Castelão",
             fontSize = 14.sp,
             textAlign = TextAlign.Center,
             color = Color.Blue,
-            modifier = Modifier.clickable { onDeveloperClick("Maria Silva") } // Navegação
+            modifier = Modifier.clickable { onDeveloperClick("Maria Silva") }
         )
         Text(
-            text = "João Pereira",
+            text = "Vinicius Trigueiro",
             fontSize = 14.sp,
             textAlign = TextAlign.Center,
             color = Color.Blue,
-            modifier = Modifier.clickable { onDeveloperClick("João Pereira") } // Navegação
+            modifier = Modifier.clickable { onDeveloperClick("João Pereira") }
         )
     }
 }
@@ -268,13 +238,5 @@ fun playGame(
             updateWins(false, true)
             "Você perdeu!"
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GameScreenPreview() {
-    PedraPapelTesouraTheme {
-        GameScreen()
     }
 }

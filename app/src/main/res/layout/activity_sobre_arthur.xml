@@ -7,4 +7,231 @@
     android:layout_height="match_parent"
     tools:context=".SobreArthur">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sobre Arthur"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/sua_imagem"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="16dp"/>
+
+    <ImageView
+        android:id="@+id/sua_imagem"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/foto_arthur"
+        android:contentDescription="Imagem de Arthur"
+        app:layout_constraintTop_toBottomOf="@id/titulo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/descricao"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Olá, sou Arthur, um desenvolvedor apaixonado por tecnologia e empreendedorismo."
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/sua_imagem"
+        app:layout_constraintBottom_toTopOf="@+id/projetos_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="16dp"/>
+
+    <TextView
+        android:id="@+id/projetos_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Projetos:"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/descricao"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <LinearLayout
+        android:id="@+id/projetos_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/projetos_label"
+        app:layout_constraintBottom_toTopOf="@id/redes_sociais_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_marginEnd="16dp">
+
+            <ImageView
+                android:id="@+id/projeto1_image"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/projeto1_preview"
+                android:contentDescription="Preview do Projeto 1"/>
+
+            <TextView
+                android:id="@+id/projeto1_link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Snake Game"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="18sp"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="8dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/projeto2_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/projeto2_image"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/projeto2_preview"
+                android:contentDescription="Preview do Projeto 2"/>
+
+            <TextView
+                android:id="@+id/projeto2_link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Diag.py"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="18sp"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="8dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/redes_sociais_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Redes Sociais:"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/projetos_container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"/>
+
+    <LinearLayout
+        android:id="@+id/redes_sociais_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/redes_sociais_label"
+        app:layout_constraintBottom_toTopOf="@id/botao_voltar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"
+        android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/linkedin_icon"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/icon_linkedin"
+            android:contentDescription="Ícone do LinkedIn"/>
+
+        <TextView
+            android:id="@+id/linkedin_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LinkedIn"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="18sp"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingStart="8dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/treads_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/icon_threads"
+            android:contentDescription="Ícone do Threads"/>
+
+        <TextView
+            android:id="@+id/treads_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Threads"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="18sp"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingStart="8dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/github_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/icon_github"
+            android:contentDescription="Ícone do GitHub"/>
+
+        <TextView
+            android:id="@+id/github_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GitHub"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="18sp"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingStart="8dp"/>
+    </LinearLayout>
+</LinearLayout>
+
+<Button
+android:id="@+id/botao_voltar"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Voltar"
+app:layout_constraintTop_toBottomOf="@id/redes_sociais_container"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+android:layout_marginTop="20dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
