@@ -76,7 +76,7 @@ fun TelaSobreAntonio(modifier: Modifier = Modifier, onBackClick: () -> Unit, onG
                     modifier = Modifier.padding(bottom = 8.dp)
                 )
                 Text(
-                    text = "Olá! Sou apaixonado por tecnologia e sempre busco aprender mais sobre o mundo digital.",
+                    text = "Me chamo Antonio, trabalho como desenvolvedor de software e sou estudante de Ciência da Computação",
                     style = MaterialTheme.typography.bodyLarge,
                     color = Color(0xFF444444), // Cor de texto padrão
                     modifier = Modifier.padding(bottom = 16.dp),
@@ -87,7 +87,7 @@ fun TelaSobreAntonio(modifier: Modifier = Modifier, onBackClick: () -> Unit, onG
             // Informações
             item {
                 Text(
-                    text = "Nome: Antonio Castelao",
+                    text = "Nome: Antonio Castelão",
                     style = MaterialTheme.typography.bodyLarge
                 )
             }
@@ -122,7 +122,7 @@ fun TelaSobreAntonio(modifier: Modifier = Modifier, onBackClick: () -> Unit, onG
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                        text = "GitHub: antonio-castelao",
+                        text = "GitHub: agcastelao",
                         color = Color(0xFFEF6C00),
                         style = MaterialTheme.typography.bodyLarge
                     )
